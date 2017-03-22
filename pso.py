@@ -27,8 +27,7 @@ def sphere(position):
 def rosenbrock(position):    
     return sum([100 * (position[i+1] - position[i] ** 2) ** 2 + (position[i] - 1) ** 2 for i in range(len(position) - 1)])
 
-def rastrigin(position):
-    A = 10
+def rastrigin(position, A=10):
     return A * len(position) + sum([x ** 2 - A * math.cos(2 * math.pi * x) for x in position])
 
 # Setting fitness function to be used
