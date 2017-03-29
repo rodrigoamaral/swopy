@@ -19,19 +19,23 @@ params = dict(
 )
 
 
-# Fitness functions
+# Example fitness functions
 
 def sphere(position):
     return sum([x ** 2 for x in position])
 
-def rosenbrock(position):    
+
+def rosenbrock(position):
     return sum([100 * (position[i+1] - position[i] ** 2) ** 2 + (position[i] - 1) ** 2 for i in range(len(position) - 1)])
+
 
 def rastrigin(position, A=10):
     return A * len(position) + sum([x ** 2 - A * math.cos(2 * math.pi * x) for x in position])
 
+
 # Setting fitness function to be used
 fitness = rastrigin
+
 
 def fittest(p1, p2):
     f1 = fitness(p1)
@@ -42,6 +46,13 @@ def fittest(p1, p2):
 def new_vector(size):
     # TODO: Refactor to consider the apropriate search domain for each objective function
     return [random.uniform(-5.12, 5.12) for d in range(size)]
+
+
+# TODO: Implement Problem class
+class Problem:
+    """Represents an optimization problem with its objective
+    functions, search domains and constraints"""
+    pass
 
 
 class Particle:
@@ -64,7 +75,8 @@ class Particle:
     def __repr__(self):
         return 'Particle(position={0}, velocity={1})'.format(self.position, self.velocity)
 
-# TODO: Study how the multprocessing module could make futere multiple swarm implementation more efficient
+
+# TODO: Study how the multiprocessing module could make future multiple swarm implementation more efficient
 # See: https://docs.python.org/3/library/multiprocessing.html
 class Swarm:
     def __init__(self, size=100):
