@@ -5,8 +5,9 @@ pso.py
 Test functions: https://en.wikipedia.org/wiki/Test_functions_for_optimization
 """
 
-import random
 import math
+import numpy as np
+
 
 params = dict(
     swarm_size=75,
@@ -45,7 +46,7 @@ def fittest(p1, p2):
 
 def new_vector(size):
     # TODO: Refactor to consider the apropriate search domain for each objective function
-    return [random.uniform(-5.12, 5.12) for d in range(size)]
+    return [np.random.uniform(-5.12, 5.12) for d in range(size)]
 
 
 # TODO: Implement Problem class
@@ -62,9 +63,9 @@ class Particle:
         self.best = self.position
 
     def update(self, gb):
-        vr = random.uniform(0, params['velocity_retention'])
-        pbr = random.uniform(0, params['pb_retention'])
-        gbr = random.uniform(0, params['gb_retention'])
+        vr = np.random.uniform(0, params['velocity_retention'])
+        pbr = np.random.uniform(0, params['pb_retention'])
+        gbr = np.random.uniform(0, params['gb_retention'])
         jump = params['jump_size']
         # TODO: Refactor this loop
         for i in range(len(self.velocity)):
